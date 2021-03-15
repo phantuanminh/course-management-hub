@@ -1,10 +1,12 @@
-import HelloWorld from './HelloWorld';
 import './App.css';
+import CourseCard from './CourseCard';
 
 function App() {
   return (
     <div className="App">
-      <HelloWorld />
+      <CourseCard />
+      <CourseCard />
+      <CourseCard />
     </div>
   );
 }
