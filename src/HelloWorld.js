@@ -6,7 +6,7 @@ const HelloWorld = () => {
     }
 
     return (
-        <button onClick={sayHello}>Click Me!</button>
+        <button onClick={sayHello}>Click Me!</button> // Test
     );
 };
 
