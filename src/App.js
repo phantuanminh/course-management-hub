@@ -1,7 +1,6 @@
-import React from 'react'
+import React from 'react';
 import './App.css';
-import CourseCard from './CourseCard';
-import DynamicCard from './DynamicCard';
+import CardContainer from './CardContainer';
 
 function App() {
 
@@ -13,10 +12,11 @@ function App() {
         <h1>Course LMS Manager</h1>
       </div>
 
-      <div className="cardFlexContainer">
-        <DynamicCard />
-        <CourseCard />
+      {/* Body */}
+      <div>
+        <CardContainer />
       </div>
+      
     </div>
   );
 }
