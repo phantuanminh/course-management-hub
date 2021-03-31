@@ -19,7 +19,7 @@ class CourseCard extends React.Component {
                     </div>
                     <FeaturedLink/>
                 </div>
-                
+
                 <div className="infoText">
                     <ul>
                         <li>Here's one sample TODO item</li>

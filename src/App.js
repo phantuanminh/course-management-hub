@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css';
 import CourseCard from './CourseCard';
+import DynamicCard from './DynamicCard';
 
 function App() {
 
@@ -13,13 +14,9 @@ function App() {
       </div>
 
       <div className="cardFlexContainer">
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-      </div> 
+        <DynamicCard />
+        <CourseCard />
+      </div>
     </div>
   );
 }
