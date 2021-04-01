@@ -40,6 +40,13 @@
   margin-top: 0px;
 }
 
+.extendedCourseCard {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  background-color: whitesmoke;
+  margin-top: 0px;
+}
+
 img {
   width: 20px;
   height: 20px;
@@ -76,7 +83,7 @@ img {
   align-items: center;
   border: .5px solid slategray;
   border-radius: 10px;
-  background-color: gainsboro;
+  background-color: gainsboro !important;
 }
 
 .featuredLink h3 {
@@ -98,6 +105,11 @@ img {
 
 #chevron {
   width: 40px;
+}
+
+.chevronButton {
+  border: None;
+  opacity: 100%;
 }
 
 .linkRow {
