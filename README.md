@@ -12,6 +12,16 @@
 ## Our Approach
 The Course Central Hub resembles a deck of cards that contains information about courses, activities, RSOs, etc.
 
+**First Snapshot**
+
+![img.png](Snapshot.png)
+
+Tryout our **Figma** prototype at: https://www.figma.com/proto/ffhqRo0S7FlRcr1tKCugeu/Website-Design?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1
+
+**Where do we get the data?**
+- At the **first stage** of the project, users would have to **manually input** data into the cards.
+- For **future work**, we would retain data from school websites and automatically fill in the card, using website APIs. (school sites Moodle and PrarieLearn among others allow users to retrieve data from the site using API).
+=======
 **Snapshot**
 
 [Snapshot.png]
