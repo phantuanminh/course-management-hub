@@ -21,3 +21,11 @@ Tryout our **Figma** prototype at: https://www.figma.com/proto/ffhqRo0S7FlRcr1tK
 **Where do we get the data?**
 - At the **first stage** of the project, users would have to **manually input** data into the cards.
 - For **future work**, we would retain data from school websites and automatically fill in the card, using website APIs. (school sites Moodle and PrarieLearn among others allow users to retrieve data from the site using API).
+=======
+**Snapshot**
+
+[Snapshot.png]
+
+**Where do we get the data?**
+- At the first stage of the project, users would have to manually input data into the cards.
+- In the future, we would get data from school websites and automatically fill in the card, using website APIs. (school sites Moodle and PrarieLearn among others allow users to retrieve data from the site using API)
