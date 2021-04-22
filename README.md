@@ -1,7 +1,23 @@
-# ep-7
+# UIUC Course Management Hub
 
-### Team Members: Cale Wolf, Meghna Mavila, Minh Phan, & Ayushi Singh
+**Overview:** UIUC CMH is a web application that helps students with organizing their courses, workload and activities throughout the semester.
 
-Building a central hub that allows students to keep track of their course management systems in an organized manner with Python, Flask (backend), and React (frontend).
+**Team:** Cale Wolf, Minh Phan, Meghna Mavila, Ayushi Singh, Rithika Bhattaram.
 
-In order to run the code, you need to install the following libraries:
+## Background
+>In order to keep track of their classes, an Illini has to manage his/her information on least 6 websites per semester. As COVID-19 strikes, the university shifted remotely. The number of sites that students have to manage eventually increases.
+
+**&#8594; Solution:** A central hub that allows students to keep track of their course management systems in an organized manner.
+
+## Our Approach
+The Course Central Hub resembles a deck of cards that contains information about courses, activities, RSOs, etc.
+
+**First Snapshot**
+
+![img.png](Snapshot.png)
+
+Tryout our **Figma** prototype at: https://www.figma.com/proto/ffhqRo0S7FlRcr1tKCugeu/Website-Design?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1
+
+**Where do we get the data?**
+- At the **first stage** of the project, users would have to **manually input** data into the cards.
+- For **future work**, we would retain data from school websites and automatically fill in the card, using website APIs. (school sites Moodle and PrarieLearn among others allow users to retrieve data from the site using API).
