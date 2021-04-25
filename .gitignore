@@ -1,4 +1,6 @@
 node_modules
 /*.json
 package-lock.json
-back-end (tutorial)/venv/
+/back-end (tutorial)/venv/
+/back-end (tutorial)/.idea/
+.idea
