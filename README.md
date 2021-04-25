@@ -23,3 +23,15 @@ Tryout our **Figma** prototype at: https://www.figma.com/proto/ffhqRo0S7FlRcr1tK
 **Where do we get the data?**
 - At the **first stage** of the project, users would have to **manually input** data into the cards.
 - For **future work**, we would retain data from school websites and automatically fill in the card, using website APIs. (school sites Moodle and PrarieLearn among others allow users to retrieve data from the site using API).
+
+## Feedback
+We are open to any feedback to the project!
+
+If you have any feedback or want to contribute to the project, let us know by filling out this form: https://forms.gle/PjEL4GrqaMEV8ZPHA.
+
+## Progress
+Right now, we are still working around with the front-end design & function. We will continue to work on the back-end in the future to reach an MVP.
+
+## Project Structure
+We will be using Reactjs and Flask in this project. We have been working around front-end and back-end separately and yet to come up with an overall structure.  
+
