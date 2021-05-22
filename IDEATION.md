@@ -16,11 +16,11 @@ The Course Central Hub resembles a deck of cards that contains information about
 
 **First Snapshot**
 
-![img.png](Snapshot.png)
+![img.png](snapshot.png)
 
 Tryout our **Figma** prototype at: https://www.figma.com/proto/ffhqRo0S7FlRcr1tKCugeu/Website-Design?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1
 
-![img.png](figma-screenshot.png)
+![img.png](figma.png)
 
 **Where do we get the data?**
 
