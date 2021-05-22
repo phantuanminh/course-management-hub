@@ -6,6 +6,8 @@ import "./App.css";
 import "reactjs-popup/dist/index.css";
 import cardInfo from "./course_info";
 
+// FIXME: This file contains code for loading a course card from a json file
+
 //// TODO: Break this file into even smaller files:
 //// including each course card, the pop-up whenever we want to edit anything.
 // TODO: Continue making things modular
