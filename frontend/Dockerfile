@@ -18,6 +18,7 @@ RUN npm install
 RUN npm update
 RUN npm install react-scripts -g
 RUN npm install @material-ui/core
+RUN npm install @material-ui/icons
 
 # Add React app to working directory
 ADD . /app
