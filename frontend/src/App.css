@@ -1,5 +1,10 @@
 .App {
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 15px;
+  /* max-height: 80vh; */
+  /* height: 80px; */
 }
 
 .App-logo {
@@ -22,6 +27,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+CardContainer {
+  align-items: center;
+}
+
+Footer {
+  position: fixed;
+  bottom: 0;
 }
 
 .App-link {
