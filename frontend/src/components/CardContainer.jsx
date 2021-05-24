@@ -7,7 +7,7 @@ const CardContainer = () => {
   return (
     <div style={{height: "auto", maxWidth: "70vw", margin: "0 auto"}}>
       <Grid container spacing={3} justify="space-between">
-        {cardInfo.map(card => <CourseCard courseName={card.courseName} toDo={card.toDo} />)}
+        {cardInfo.map(card => <CourseCard key={card.courseName} courseName={card.courseName} toDo={card.toDo} />)}
       </Grid>
     </div>
   )
