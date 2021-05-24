@@ -1,13 +1,18 @@
 import "./App.css";
+import CardContainer from "./components/CardContainer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-import UnauthorizedPage from "./components/unauthorized/unauthorized_page";
-
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <UnauthorizedPage />
+      <Header />
+      <br />
+      <CardContainer />
+      <br />
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
