@@ -1,10 +1,13 @@
 import "./App.css";
 
-import Register from "./components/register";
-import Login from "./components/login";
+import UnauthorizedPage from "./components/unauthorized/unauthorized_page";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <UnauthorizedPage />
+    </div>
+  );
 }
 
 export default App;
