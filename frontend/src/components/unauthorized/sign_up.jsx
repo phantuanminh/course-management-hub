@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+    fontSize: "large",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -33,7 +34,7 @@ export default function SignUp() {
   return (
     <div className={classes.paper}>
       <Avatar className={classes.avatar}>
-        <LockOutlinedIcon />
+        <AccountCircleIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
         Sign up
