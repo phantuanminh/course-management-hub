@@ -16,8 +16,6 @@ COPY package.json /app/package.json
 COPY package-lock.json /app/package-lock.json
 RUN npm install
 RUN npm update
-RUN npm install react-scripts -g
-RUN npm install @material-ui/core
 
 # Add React app to working directory
 ADD . /app

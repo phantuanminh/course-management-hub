@@ -1,7 +1,21 @@
-import React, { useState } from 'react'
-import AddIcon from '@material-ui/icons/Add'
-import { Typography, Grid, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Avatar, TextField, FormControlLabel, Checkbox, makeStyles } from '@material-ui/core'
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import React, { useState } from "react";
+import AddIcon from "@material-ui/icons/Add";
+import {
+  Typography,
+  Grid,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Avatar,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  makeStyles,
+} from "@material-ui/core";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,16 +38,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AddMenu = () => {
-  const [open, setOpen] = useState(false)
-  const classes = useStyles()
+  const [open, setOpen] = useState(false);
+  const classes = useStyles();
 
   const handleClickOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
   return (
     <>
       <Button onClick={handleClickOpen}>
@@ -99,7 +113,8 @@ const AddMenu = () => {
                     onClick={handleClose}
                     color="secondary"
                     className={classes.submit}
-                    autoFocus>
+                    autoFocus
+                  >
                     Cancel
                   </Button>
                   <Button
@@ -107,8 +122,9 @@ const AddMenu = () => {
                     color="primary"
                     type="submit"
                     className={classes.submit}
-                    style={{float: "right"}}
-                    autoFocus>
+                    style={{ float: "right" }}
+                    autoFocus
+                  >
                     Add Course
                   </Button>
                 </form>
@@ -118,7 +134,7 @@ const AddMenu = () => {
         </DialogContent>
       </Dialog>
     </>
-  )
-}
+  );
+};
 
-export default AddMenu
+export default AddMenu;

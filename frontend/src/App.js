@@ -1,7 +1,8 @@
-import "./App.css"
-import CardContainer from './components/CardContainer'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import "./App.css";
+import CardContainer from "./components/authorized/CardContainer";
+import Header from "./components/authorized/Header";
+import Footer from "./components/authorized/Footer";
+import UnauthorizedPage from "./components/unauthorized/UnauthorizedPage";
 
 const App = () => {
   return (
@@ -11,8 +12,9 @@ const App = () => {
       <CardContainer />
       <br />
       <Footer />
+      <UnauthorizedPage />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

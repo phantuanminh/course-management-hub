@@ -1,17 +1,26 @@
-import React, { useState } from 'react'
-import EditIcon from '@material-ui/icons/Edit'
-import { Typography, Grid, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
+import React, { useState } from "react";
+import EditIcon from "@material-ui/icons/Edit";
+import {
+  Typography,
+  Grid,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@material-ui/core";
 
 const EditMenu = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
   return (
     <>
       <Button onClick={handleClickOpen}>
@@ -26,9 +35,7 @@ const EditMenu = () => {
         <DialogTitle id="alert-dialog-title">{"Edit"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <Grid container spacing={3}>
-
-            </Grid>
+            <Grid container spacing={3}></Grid>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -38,7 +45,7 @@ const EditMenu = () => {
         </DialogActions>
       </Dialog>
     </>
-  )
-}
+  );
+};
 
-export default EditMenu
+export default EditMenu;

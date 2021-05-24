@@ -1,15 +1,14 @@
-import React from 'react'
-import { Grid, Typography, Button } from '@material-ui/core'
-import DateRangeIcon from '@material-ui/icons/DateRange'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import React from "react";
+import { Grid, Typography, Button } from "@material-ui/core";
+import DateRangeIcon from "@material-ui/icons/DateRange";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const Header = () => {
   return (
     <Grid container spacing={3}>
-      <Grid item xs={2}>
-      </Grid>
+      <Grid item xs={2}></Grid>
       <Grid item xs={8}>
-        <Typography variant="h4" style={{fontWeight: "800"}}>
+        <Typography variant="h4" style={{ fontWeight: "800" }}>
           Course Management Hub
         </Typography>
       </Grid>
@@ -22,7 +21,7 @@ const Header = () => {
         </Button>
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
