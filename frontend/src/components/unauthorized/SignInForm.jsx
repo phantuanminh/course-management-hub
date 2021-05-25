@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInForm() {
+const SignInForm = () => {
   const classes = useStyles();
 
   return (
@@ -78,4 +78,6 @@ export default function SignInForm() {
       </form>
     </div>
   );
-}
+};
+
+export default SignInForm;

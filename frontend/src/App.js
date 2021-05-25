@@ -1,18 +1,11 @@
 import "./App.css";
-import CardContainer from "./components/authorized/CardContainer";
-import Header from "./components/authorized/Header";
-import Footer from "./components/authorized/Footer";
-import UnauthorizedPage from "./components/unauthorized/UnauthorizedPage";
+import UnauthorizedPage from "./components/UnauthorizedPage";
+import AuthorizedPage from "./components/AuthorizedPage";
 
 const App = () => {
   return (
     <div className="App">
-      <Header />
-      <br />
-      <CardContainer />
-      <br />
-      <Footer />
-      <UnauthorizedPage />
+      <AuthorizedPage />
     </div>
   );
 };

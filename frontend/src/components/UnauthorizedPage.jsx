@@ -7,9 +7,9 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 
-import SignInForm from "./SignInForm";
-import SignUpForm from "./SignUpForm";
-import Copyright from "../Copyright";
+import SignInForm from "./unauthorized/SignInForm";
+import SignUpForm from "./unauthorized/SignUpForm";
+import Copyright from "./Copyright";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignUpDialogue() {
+const SignUpDialogue = () => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -69,9 +69,9 @@ function SignUpDialogue() {
       </Dialog>
     </div>
   );
-}
+};
 
-export default function UnauthorizedPage() {
+const UnauthorizedPage = () => {
   const classes = useStyles();
 
   return (
@@ -96,4 +96,6 @@ export default function UnauthorizedPage() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default UnauthorizedPage;

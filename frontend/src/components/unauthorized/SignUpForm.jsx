@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUpForm() {
+const SignUpForm = () => {
   const classes = useStyles();
 
   return (
@@ -100,4 +100,6 @@ export default function SignUpForm() {
       </form>
     </div>
   );
-}
+};
+
+export default SignUpForm;

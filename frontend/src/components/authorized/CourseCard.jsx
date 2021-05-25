@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  makeStyles,
-  Container,
-  Grid,
-  Button,
-} from "@material-ui/core";
+import { Typography, makeStyles, Grid } from "@material-ui/core";
 import zoom from "../../assets/zoom.png";
 
 const useStyles = makeStyles({
