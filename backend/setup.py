@@ -20,38 +20,38 @@ db = MongoEngine()
 db.init_app(app)
 
 
-class Todo(db.Document):
-    title = db.StringField(max_length=60)
-    text = db.StringField()
-    done = db.BooleanField(default=False)
-    pub_date = db.DateTimeField(default=datetime.datetime.now)
+# class Todo(db.Document):
+#     title = db.StringField(max_length=60)
+#     text = db.StringField()
+#     done = db.BooleanField(default=False)
+#     pub_date = db.DateTimeField(default=datetime.datetime.now)
 
 
-@app.route("/api")
-def index():
-    Todo.objects().delete()
-    Todo(title="Simple todo A", text="12345678910").save()
-    Todo(title="Simple todo B", text="12345678910").save()
-    Todo.objects(title__contains="B").update(set__text="Hello world")
-    todos = Todo.objects().to_json()
-    return Response(todos, mimetype="application/json", status=200)
+# @app.route("/api")
+# def index():
+#     Todo.objects().delete()
+#     Todo(title="Simple todo A", text="12345678910").save()
+#     Todo(title="Simple todo B", text="12345678910").save()
+#     Todo.objects(title__contains="B").update(set__text="Hello world")
+#     todos = Todo.objects().to_json()
+#     return Response(todos, mimetype="application/json", status=200)
 
 
-@app.route("/api2")
-def index2():
-    Todo.objects().delete()
-    Todo(title="Simple todo A", text="12345678910").save()
-    Todo(title="Simple todo B", text="12345678910").save()
-    Todo.objects(title__contains="B").update(set__text="Hello world")
-    todos = Todo.objects().to_json()
-    return jsonify({'x': '1', 'y': '2'})
+# @app.route("/api2")
+# def index2():
+#     Todo.objects().delete()
+#     Todo(title="Simple todo A", text="12345678910").save()
+#     Todo(title="Simple todo B", text="12345678910").save()
+#     Todo.objects(title__contains="B").update(set__text="Hello world")
+#     todos = Todo.objects().to_json()
+#     return jsonify({'x': '1', 'y': '2'})
 
 
-@app.route('/add_first', methods=['GET', 'POST'])
-@cross_origin(supports_credentials=True)
-def add_first():
-    data = request.get_json()
-    return jsonify({'name': data['name'], 'num': data['num']})
+# @app.route('/add_first', methods=['GET', 'POST'])
+# @cross_origin(supports_credentials=True)
+# def add_first():
+#     data = request.get_json()
+#     return jsonify({'name': data['name'], 'num': data['num']})
 
 
 if __name__ == "__main__":

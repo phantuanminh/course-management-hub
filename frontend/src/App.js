@@ -5,7 +5,7 @@ import AuthorizedPage from "./components/AuthorizedPage";
 const App = () => {
   return (
     <div className="App">
-      <AuthorizedPage />
+      <UnauthorizedPage />
     </div>
   );
 };
