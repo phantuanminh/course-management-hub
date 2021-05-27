@@ -73,7 +73,6 @@ const SignInForm = () => {
           label="Remember me"
         />
         <Button
-          type="submit"
           fullWidth
           variant="contained"
           color="primary"
@@ -87,9 +86,9 @@ const SignInForm = () => {
               cache: "no-cache",
               credentials: "same-origin",
               headers: {
+                "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
-                "Content-Type": "application/json",
               },
               body: JSON.stringify(data),
             });
