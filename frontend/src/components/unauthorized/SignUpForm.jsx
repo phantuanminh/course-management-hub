@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUpForm = () => {
   const classes = useStyles();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div className={classes.paper}>
@@ -51,6 +55,8 @@ const SignUpForm = () => {
               id="firstName"
               label="First Name"
               autoFocus
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -62,6 +68,8 @@ const SignUpForm = () => {
               label="Last Name"
               name="lastName"
               autoComplete="lname"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -73,6 +81,8 @@ const SignUpForm = () => {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -85,15 +95,38 @@ const SignUpForm = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Grid>
         </Grid>
         <Button
-          type="submit"
           fullWidth
           variant="contained"
           color="primary"
           className={classes.submit}
+          onClick={async () => {
+            const data = { firstName, lastName, email, password };
+            const response = await fetch("/api/sign_up", {
+              crossDomain: true,
+              method: "POST",
+              mode: "cors",
+              cache: "no-cache",
+              credentials: "same-origin",
+              headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+              console.log("respond work");
+              const data = await response.json();
+              console.log(data);
+            }
+          }}
         >
           Sign up
         </Button>
