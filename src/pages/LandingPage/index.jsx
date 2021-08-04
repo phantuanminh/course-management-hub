@@ -1,22 +1,25 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import clsx from 'clsx';
 
-import DEMO_1 from '../../assets/demo-1.png';
-import DEMO_2 from '../../assets/demo-2.png';
-import DEMO_3 from '../../assets/demo-3.png';
+import DEMO_1 from '../../assets/demo-1.png'
 
 const LandingPage = () => {
     return (
         <div className={styles.container}>
-            <div className={styles.demo}>
-                <img className={clsx(styles.image, styles.image1)} src={DEMO_1} alt="Demo-1" />
-                <img className={clsx(styles.image, styles.image2)} src={DEMO_2} alt="Demo-2" />
-                <img className={clsx(styles.image, styles.image3)} src={DEMO_3} alt="Demo-3" />
+            <div className={styles.title}>
+                <h1 style={{fontSize : 40}}>Course Management Hub</h1>
+                <p>Manage your courses easier with a few clicks</p>
             </div>
             <div className={styles.menu}>
-                <button>Sign in</button>
-                <button>Sign up</button>
+                <div>
+                    <a className={styles.button} href="/sign_in" style={{backgroundColor: "red"}}><span>Sign in</span></a>
+                </div>
+                <div>
+                    <a className={styles.button} href="/sign_up" style={{backgroundColor: "gray"}}><span>Sign up</span></a>
+                </div>
+            </div>
+            <div className={styles.demo}>
+                <img className={styles.image} src={DEMO_1} alt="Demo 1"  />
             </div>
         </div>
     );

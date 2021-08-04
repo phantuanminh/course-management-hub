@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 COPY ./src ./src
 COPY ./public ./public
 RUN npm i
-RUN npm build
+RUN npm run build
 
 # Build step #2: build an nginx container
 FROM nginx:stable-alpine

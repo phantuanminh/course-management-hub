@@ -1,54 +1,77 @@
 .container {
-    position: fixed;
+    position: absolute;
     padding: 0;
     margin: 0;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    text-align: center;
 
-    display: grid;
-    grid-template-columns: 4fr 1fr;
+    .title {
+        position: relative;
+    }
 
     .demo {
-        display: grid;
+        position: relative;
         overflow: hidden;
-        background-color: black;
 
         .image {
             position: relative;
-            flex-shrink: 0;
             max-width: 50%;
             max-height: 50%;
             background-color: #fff;
-            position: absolute;
-            top: 0;
-            left: 0;
-            box-shadow: 0 0 5px 0 #333;
-            border: 1px solid #333;
-        }
-        
-        .image1:hover {
-            top: 45px;
-            left: -140px;
-            width: 200px;
-        }
-
-        .image2:hover {
-            top: 45px;
-            left: 200px;
-            width: 200px;
-        }
-
-        .image3:hover {
-            top: 45px;
-            left: 100px;
-            width: 200px;
+            box-shadow: 0px 5px 10px 0px black;
+            border: 5px solid black;
+            border-radius: 20px;
         }
     }
 
     .menu {
         background-color: white;
-        box-shadow: -10px 0px 10px 1px whitesmoke;
+        box-shadow: -2px 0px 2px 0px whitesmoke;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+
+        .button {
+            display: block;
+            border-radius: 15px;
+            background-color: black;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 25px;
+            padding: 20px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 30px 15px;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+        
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
     }
 }
