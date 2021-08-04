@@ -37,3 +37,12 @@ backend network  |
                   .
                    \____ Database (MongoDB)
 ```
+
+## How to run
+```bash
+$ npm i
+$ npm start
+```
+
+## References
+https://github.com/miguelgrinberg/react-flask-app/
