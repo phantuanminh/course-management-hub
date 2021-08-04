@@ -2,8 +2,6 @@
 
 **Overview:** UIUC CMH is a web application that helps students with organizing their courses, workload and activities throughout the semester.
 
-**Team:** Minh Phan, Bach Ta, Meghna Mavila, Cale Wolf, Ayushi Singh, Rithika Bhattaram.
-
 ## 1. Background
 
 > In order to keep track of their classes, an Illini has to manage his/her information on least 6 websites per semester. As COVID-19 strikes, the university shifted remotely. The number of sites that students have to manage eventually increases.
