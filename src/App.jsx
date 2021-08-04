@@ -1,14 +1,10 @@
-import "./App.css";
+import "./App.scss";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
-import LandingPage from "./components/LandingPage";
-import UnauthorizedPage from "./components/UnauthorizedPage";
-import AuthorizedPage from "./components/AuthorizedPage";
 
 const App = () => {
   return (
@@ -49,15 +45,15 @@ const App = () => {
 };
 
 function Home() {
-  return <LandingPage />;
+  return <div>home</div>;
 }
 
 function About() {
-  return <UnauthorizedPage />;
+  return <div>about</div>;
 }
 
 function Users() {
-  return <AuthorizedPage />;
+  return <div>user</div>;
 }
 
 export default App;

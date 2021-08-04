@@ -1,24 +1,17 @@
-# Pull latest official node image
-FROM node:latest
+# This Dockerfile builds the React front end for nginx.
+# It also proxies /api requests to api:5000
 
-# Expose ports
-EXPOSE 3000
-EXPOSE 35729
-
-# Set working directory
+# Build step #1: build the React front end
+FROM node:latest as build-step
 WORKDIR /app
-
-# add `/app/node_modules/.bin` to environment variables
 ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json package-lock.json ./
+COPY ./src ./src
+COPY ./public ./public
+RUN npm i
+RUN npm build
 
-# Copy package files and install app dependencies
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
-RUN npm install
-RUN npm update
-
-# Add React app to working directory
-ADD . /app
-
-# Start the React app
-CMD ["npm", "start"]
+# Build step #2: build an nginx container
+FROM nginx:stable-alpine
+COPY --from=build-step /app/build /usr/share/nginx/html
+COPY deployment/nginx.default.conf /etc/nginx/conf.d/default.conf
