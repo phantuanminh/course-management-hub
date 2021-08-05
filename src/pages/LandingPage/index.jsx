@@ -12,10 +12,10 @@ const LandingPage = () => {
             </div>
             <div className={styles.menu}>
                 <div>
-                    <a className={styles.button} href="/sign_in" style={{backgroundColor: "red"}}><span>Sign in</span></a>
+                    <a className={styles.button} href="/sign_in"><span>Sign in</span></a>
                 </div>
                 <div>
-                    <a className={styles.button} href="/sign_up" style={{backgroundColor: "gray"}}><span>Sign up</span></a>
+                    <a className={styles.button} href="/sign_up" style={{backgroundColor: "#353535"}}><span>Sign up</span></a>
                 </div>
             </div>
             <div className={styles.demo}>

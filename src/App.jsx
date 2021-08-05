@@ -8,6 +8,7 @@ import './App.scss';
 
 import LandingPage from './pages/LandingPage';
 import Auth from './pages/Auth';
+import Home from './pages/Home';
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
           </Route>
           <Route path="/sign_up" exact>
             <div>signup</div>
+          </Route>
+          <Route path="/home" exact>
+            <Home />
           </Route>
         </Switch>
       </Router>
