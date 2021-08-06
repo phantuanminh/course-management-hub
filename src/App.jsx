@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 import './App.scss';
 
 import LandingPage from './pages/LandingPage';
@@ -21,9 +22,7 @@ const App = () => {
           <Route path="/auth" exact>
             <Auth />
           </Route>
-          <Route path="/home" exact>
-            <Home />
-          </Route>
+          <PrivateRoute path="/home" component={Home} />
         </Switch>
       </Router>
     </div>

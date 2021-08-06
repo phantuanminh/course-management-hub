@@ -33,6 +33,7 @@ const SignIn = () => {
       if (tokenResponse.ok) {
         const token = await tokenResponse.json();
         console.log(token);
+        sessionStorage.setItem('access_token', token.access_token);
       }
     }
     
