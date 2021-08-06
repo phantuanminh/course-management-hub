@@ -17,28 +17,34 @@ def verify_password(username_or_token, password):
     g.user = user
     return True
 
-@routes.route('/api/user', methods=['POST'])
+@routes.route('/api/register', methods=['POST'])
 def new_user():
     """
     Register a new user by parsing a POST request containing user credentials and
     issuing a JWT token.
     .. example::
-        $ curl http://localhost:5000/api/user -X POST \
+        $ curl http://localhost:5000/api/register -X POST \
             -d '{"username":"Yasoob","password":"strongpassword"}'
     """
     req = request.get_json(force=True)
     username = req.get('username')
     password = req.get('password')
+
+    # Missing arguments
     if username is None or password is None:
-        abort(400)    # Missing arguments
+        abort(400)
+
+    # User existed
     if User.query.filter_by(username=username).first() is not None:
-        abort(400)    # Existing user
+        abort(400)
+
+    # If valid, add new user to database
     user = User(username=username)
     user.hash_password(password)
     db.session.add(user)
     db.session.commit()
-    return (jsonify({'username': user.username}), 201,
-            {'Location': url_for('api.get_user', id=user.id, _external=True)})
+
+    return (jsonify({'username': user.username}), 201)
 
 @routes.route('/api/login', methods=['POST'])
 def login():
@@ -52,10 +58,14 @@ def login():
     req = request.get_json(force=True)
     username = req.get('username', None)
     password = req.get('password', None)
-    user = User(username=username)
-    user.hash_password(password)
-    return (jsonify({'username': user.username}), 201,
-            {'Location': url_for('api.get_user', id=user.id, _external=True)})
+
+    # Validate user
+    is_validated = verify_password(username, password)
+
+    if not (is_validated):
+        abort(400)
+
+    return (jsonify({'username': username}), 201)
 
 @routes.route('/api/users/<int:id>')
 def get_user(id):

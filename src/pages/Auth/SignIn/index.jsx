@@ -1,13 +1,45 @@
 import React, {useState} from 'react';
 import styles from  './styles.module.scss';
 import clsx from 'clsx';
+import base64 from 'base-64';
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const onSubmitClick = async (e) => {
+    e.preventDefault();
+
+    // Configure request options
+    const requestOptions = {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    }
+
+    const response = await fetch("http://localhost:5000/api/login", requestOptions);
+
+    // If register success, console log the username and request access token
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+
+      const tokenRequestOptions = {
+        headers: { Authorization: "Basic " + base64.encode(username + ":" + password) }
+      }
+
+      // Request and console log token
+      const tokenResponse = await fetch("http://localhost:5000/api/token", tokenRequestOptions);
+      if (tokenResponse.ok) {
+        const token = await tokenResponse.json();
+        console.log(token);
+      }
+    }
+    
+  }
+
   return (
-    <div className={clsx(styles.formComp, styles.center)}>
+    <div action="#" className={clsx(styles.formComp, styles.center)}>
       <h1>Sign In</h1>
       <form className={clsx(styles.signInForm, styles.center)}>
         <label>
@@ -22,19 +54,8 @@ const SignIn = () => {
         </label>
         <br/>
         <button
-          onClick={async () => {
-            // Configure request options
-            const requestOptions = {
-              method: 'POST',
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ username, password })
-            }
-
-            const response = await fetch("http://localhost:5000/api/login", requestOptions);
-            const data = await response.json();
-
-            console.log(data);
-          }}
+          type="submit"
+          onClick={onSubmitClick}
         >
           Sign In!
         </button>

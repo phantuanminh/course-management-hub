@@ -43,4 +43,5 @@ $ npm start
 ```
 
 ## References
-https://github.com/miguelgrinberg/react-flask-app/
+- https://yasoob.me/posts/how-to-setup-and-deploy-jwt-auth-using-react-and-flask/
+- https://github.com/miguelgrinberg/react-flask-app/
