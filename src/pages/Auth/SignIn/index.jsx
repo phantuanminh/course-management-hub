@@ -3,7 +3,7 @@ import styles from  './styles.module.scss';
 import clsx from 'clsx';
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   return (
@@ -11,9 +11,9 @@ const SignIn = () => {
       <h1>Sign In</h1>
       <form className={clsx(styles.signInForm, styles.center)}>
         <label>
-          Email:
+          Username:
           <br/>
-          <input name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input name="email" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
         <label>
           Password:
@@ -23,26 +23,17 @@ const SignIn = () => {
         <br/>
         <button
           onClick={async () => {
-            const data = { email, password };
-            const response = await fetch("/api/login", {
-              crossDomain: true,
-              method: "POST",
-              mode: "cors",
-              cache: "no-cache",
-              credentials: "same-origin",
-              headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
-              },
-              body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-              console.log("respond work");
-              const data = await response.json();
-              console.log(data);
+            // Configure request options
+            const requestOptions = {
+              method: 'POST',
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ username, password })
             }
+
+            const response = await fetch("http://localhost:5000/api/login", requestOptions);
+            const data = await response.json();
+
+            console.log(data);
           }}
         >
           Sign In!

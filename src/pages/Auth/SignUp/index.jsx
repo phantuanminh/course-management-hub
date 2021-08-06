@@ -28,24 +28,19 @@ const SignUp = () => {
         </label>
         <br/>
         <button
+          type="button"
           onClick={async () => {
             // Configure request options
             const requestOptions = {
-              crossDomain: true,
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ username, password })
             }
 
             const response = await fetch("http://localhost:5000/api/user", requestOptions);
+            const data = await response.json();
 
-            console.log(response);
-
-            if (response.ok) {
-              console.log("respond work");
-              const data = await response.json();
-              console.log(data);
-            }
+            console.log(data);
           }}
           >
           Sign Up!
