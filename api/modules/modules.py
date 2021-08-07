@@ -41,6 +41,17 @@ class Card(db.Model):
     course_meeting = db.Column(db.String(128))
     course_todo = db.Column(db.String(128))
 
+    def serialize(self):
+        """Return object data in easily serializable format"""
+        return {
+            'user_id': self.user_id,
+            'course_name': self.course_name,
+            'course_home': self.course_home,
+            'course_forum': self.course_forum,
+            'course_meeting': self.course_meeting,
+            'course_todo': self.course_todo,
+        }
+
     @staticmethod
     def get_cards(token):
         try:

@@ -99,11 +99,50 @@ def get_auth_token():
 
 @routes.route('/api/resource', methods=['POST'])
 def get_resource():
+    """
+    Get resources belong to an user, must pass a valid token!
+    .. example::
+       $ curl http://localhost:5000/api/resource -X POST \
+         -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI4MzQ1NTYzLjgxMTg4MTh9.JRrYIEE2WcD8ZSU6rQXJODfOjg_yXd79rXFzPn6bQdI"}'
+    """
     req = request.get_json(force=True)
     token = req.get('token', None)
 
     if not (verify_password(token, '')):
         abort(400)
 
-    card = Card.get_cards(token)
-    return jsonify({'welcome': 'Hello, %s!' % g.user.username, 'data': card})
+    cards = [card.serialize() for card in Card.get_cards(token).all()]
+
+    return (jsonify(data=cards), 201)
+
+
+@routes.route('/api/new_card', methods=['POST'])
+def new_card():
+    """
+    Register a new user by parsing a POST request containing user credentials and
+    issuing a JWT token.
+    .. example::
+        $ curl http://localhost:5000/api/new_card -X POST \
+            -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI4MzQ0OTM2LjQ5Mjc2ODN9.xvvYUetJkgoQPqefEnKrMv9WBx7Io_Neao4kYT_gQW0","user_id":"1","course_name":"CS126","course_home":"https://stackoverflow.com/","course_forum":"https://stackoverflow.com/","course_meeting":"https://stackoverflow.com/","course_todo":""}'
+    """
+    # Verify identity
+    req = request.get_json(force=True)
+    token = req.get('token', None)
+    if not (verify_password(token, '')):
+        abort(400)
+
+    # If valid, find user
+    user = User.verify_auth_token(token)
+
+    # Data
+    card = Card(user_id=user.id)
+    card.course_name = req.get('course_name', None)
+    card.course_home = req.get('course_home', None)
+    card.course_forum = req.get('course_forum', None)
+    card.course_meeting = req.get('course_meeting', None)
+    card.course_todo = req.get('course_todo', None)
+
+    db.session.add(card)
+    db.session.commit()
+
+    return ('', 201)
