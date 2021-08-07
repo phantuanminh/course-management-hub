@@ -14,4 +14,4 @@ services:
       dockerfile: Dockerfile.client
     image: course-management-hub-client
     ports:
-      - "3000:3000"
+      - "3000:80"
