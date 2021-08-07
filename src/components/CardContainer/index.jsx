@@ -6,7 +6,7 @@ import Loading from "../../pages/Loading";
 
 const CardContainer = () => {
   const [cards, setCards] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const token = sessionStorage.getItem("access_token");
 
@@ -26,12 +26,12 @@ const CardContainer = () => {
     if (response.status === 201) {
       const data = await response.json();
       setCards(data.data);
-      setIsLoaded(true);
+      setIsLoading(false);
       console.log(cards);
     }
   };
 
-  if (!isLoaded) {
+  if (isLoading) {
     getCards();
   }
 

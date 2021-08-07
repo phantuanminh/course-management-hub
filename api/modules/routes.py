@@ -19,6 +19,11 @@ def verify_password(username_or_token, password):
     return True
 
 
+@routes.route('/api')
+def check_connection():
+    return ('', 200)
+
+
 @routes.route('/api/register', methods=['POST'])
 def new_user():
     """
