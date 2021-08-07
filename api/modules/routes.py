@@ -1,9 +1,10 @@
 from flask import Blueprint, abort, request, jsonify, g, url_for
 from modules import auth, db
-from modules.modules import User
+from modules.modules import User, Card
 
 # In Flask, a blueprint is just a group of related routes (the functions below), it helps organize your code
 routes = Blueprint('api', __name__)
+
 
 @auth.verify_password
 def verify_password(username_or_token, password):
@@ -16,6 +17,7 @@ def verify_password(username_or_token, password):
             return False
     g.user = user
     return True
+
 
 @routes.route('/api/register', methods=['POST'])
 def new_user():
@@ -46,6 +48,7 @@ def new_user():
 
     return (jsonify({'username': user.username}), 201)
 
+
 @routes.route('/api/login', methods=['POST'])
 def login():
     """
@@ -67,6 +70,7 @@ def login():
 
     return (jsonify({'username': username}), 201)
 
+
 @routes.route('/api/users/<int:id>')
 def get_user(id):
     user = User.query.get(id)
@@ -77,15 +81,14 @@ def get_user(id):
 
 @routes.route('/api/verify', methods=['POST'])
 def verify():
-    return (jsonify({'response': 'ok'}), 201)
     req = request.get_json(force=True)
     token = req.get('token', None)
-    print(token)
 
-    if (verify_password(token)):
-        return (jsonify({'response': 'ok'}), 201)
-    
+    if (verify_password(token, '')):
+        return ('', 201)
+
     abort(400)
+
 
 @routes.route('/api/token')
 @auth.login_required
@@ -94,7 +97,13 @@ def get_auth_token():
     return jsonify({'access_token': token.decode('ascii')})
 
 
-@routes.route('/api/resource')
-@auth.login_required
+@routes.route('/api/resource', methods=['POST'])
 def get_resource():
-    return jsonify({'data': 'Hello, %s!' % g.user.username})
+    req = request.get_json(force=True)
+    token = req.get('token', None)
+
+    if not (verify_password(token, '')):
+        abort(400)
+
+    card = Card.get_cards(token)
+    return jsonify({'welcome': 'Hello, %s!' % g.user.username, 'data': card})

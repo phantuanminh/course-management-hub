@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import time
 
+
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -29,3 +30,22 @@ class User(db.Model):
             return
         return User.query.get(data['id'])
 
+
+class Card(db.Model):
+    __tablename__ = 'cards'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer)
+    course_name = db.Column(db.String(128))
+    course_home = db.Column(db.String(128))
+    course_forum = db.Column(db.String(128))
+    course_meeting = db.Column(db.String(128))
+    course_todo = db.Column(db.String(128))
+
+    @staticmethod
+    def get_cards(token):
+        try:
+            data = jwt.decode(token, secret_key,
+                              algorithms=['HS256'])
+        except:
+            return
+        return Card.query.filter_by(user_id=data['id'])

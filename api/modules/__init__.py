@@ -10,6 +10,7 @@ cors = CORS()
 auth = HTTPBasicAuth()
 secret_key = 'i am a turtle'
 
+
 def create_app():
     # Initialization
     app = Flask(__name__)

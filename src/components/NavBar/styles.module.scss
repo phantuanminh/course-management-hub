@@ -1,39 +1,41 @@
 .navBar {
-    position: relative;
-    width: 100%;
-    max-height: 100px;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-height: 100px;
+  overflow: hidden;
 
+  .navText {
+    margin: 10px;
+    font-size: 40px;
+  }
+
+  .navTitle {
+    max-width: 700px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .navItem {
+    float: right;
+    color: black;
+    padding: 20px 50px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 800px) {
     .navText {
-        margin: 10px;
-        font-size: 40px;
-    }
-
-    .navTitle {
-        position: absolute; 
-        left: 0;
-        right: 0;
-        margin-left: auto; 
-        margin-right: auto;
+      margin: 15px;
+      font-size: 30px;
     }
 
     .navItem {
-        float: right;
-        color: black;
-        padding: 20px 50px;
-        font-size: 24px;
-        font-weight: bold;
+      font-size: 20px;
+      padding: 25px 20px;
     }
-
-    @media screen and (max-width: 800px) {
-        .navText {
-            margin: 15px;
-            font-size: 30px;
-        }
-
-        .navItem {
-            font-size: 20px;
-            padding: 25px 20px;
-        }
-    }
+  }
 }

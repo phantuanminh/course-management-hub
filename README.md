@@ -12,7 +12,6 @@
 
 The Course Central Hub resembles a deck of cards that contains information about courses, activities, RSOs, etc. View our demo on Figma here: https://www.figma.com/proto/ffhqRo0S7FlRcr1tKCugeu/Website-Design?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1
 
-
 ![img.png](snapshot.png)
 
 **Where do we get the data?**
@@ -37,11 +36,14 @@ backend network  |
 ```
 
 ## How to run
+
 ```bash
 $ npm i
 $ npm start
 ```
 
 ## References
+
 - https://yasoob.me/posts/how-to-setup-and-deploy-jwt-auth-using-react-and-flask/
 - https://github.com/miguelgrinberg/react-flask-app/
+- https://blog.miguelgrinberg.com/post/restful-authentication-with-flask

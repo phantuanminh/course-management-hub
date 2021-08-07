@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import styles from  './styles.module.scss';
-import clsx from 'clsx';
-import base64 from 'base-64';
+import React, { useState } from "react";
+import styles from "./styles.module.scss";
+import clsx from "clsx";
+import base64 from "base-64";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -12,12 +12,15 @@ const SignIn = () => {
 
     // Configure request options
     const requestOptions = {
-      method: 'POST',
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password })
-    }
+      body: JSON.stringify({ username, password }),
+    };
 
-    const response = await fetch("http://localhost:5000/api/login", requestOptions);
+    const response = await fetch(
+      "http://localhost:5000/api/login",
+      requestOptions
+    );
 
     // If register success, console log the username and request access token
     if (response.ok) {
@@ -25,19 +28,26 @@ const SignIn = () => {
       console.log(data);
 
       const tokenRequestOptions = {
-        headers: { Authorization: "Basic " + base64.encode(username + ":" + password) }
-      }
+        headers: {
+          Authorization: "Basic " + base64.encode(username + ":" + password),
+        },
+      };
 
       // Request and console log token
-      const tokenResponse = await fetch("http://localhost:5000/api/token", tokenRequestOptions);
+      const tokenResponse = await fetch(
+        "http://localhost:5000/api/token",
+        tokenRequestOptions
+      );
       if (tokenResponse.ok) {
         const token = await tokenResponse.json();
         console.log(token);
-        sessionStorage.setItem('access_token', token.access_token);
+        sessionStorage.setItem("access_token", token.access_token);
       }
+
+      // Reload page with authentication stored
+      window.location.reload();
     }
-    
-  }
+  };
 
   return (
     <div action="#" className={clsx(styles.formComp, styles.center)}>
@@ -45,24 +55,29 @@ const SignIn = () => {
       <form className={clsx(styles.signInForm, styles.center)}>
         <label>
           Username:
-          <br/>
-          <input name="email" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <br />
+          <input
+            name="email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </label>
         <label>
           Password:
-          <br/>
-          <input name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <br />
+          <input
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
-        <br/>
-        <button
-          type="submit"
-          onClick={onSubmitClick}
-        >
+        <br />
+        <button type="submit" onClick={onSubmitClick}>
           Sign In!
         </button>
       </form>
     </div>
   );
-}
+};
 
 export default SignIn;

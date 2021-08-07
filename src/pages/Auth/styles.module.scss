@@ -1,4 +1,4 @@
-.container{
+.container {
   position: absolute;
   padding: 0;
   margin: 0;
@@ -12,7 +12,7 @@
   box-shadow: 1px 2px 2px #592941;
   border: 0.1em solid #592941;
   border-radius: 0.5em;
-  background-color: black; 
+  background-color: black;
 }
 
 .banner {
@@ -31,10 +31,10 @@
 
   flex-direction: column;
 
-  background-color: rgba(255,0,0,0.3);;
+  background-color: rgba(255, 0, 0, 0.3);
   opacity: 1;
 
-  color: #EEFCF8;
+  color: #eefcf8;
   text-align: center;
 
   transition: 2s;
@@ -54,36 +54,36 @@
   width: 65%;
   height: 100%;
 
-  background-color: #EEFCF8;
+  background-color: #eefcf8;
   opacity: 1;
 
   font-weight: bold;
-  color: #035E7B;
+  color: #035e7b;
 
   transition: 2s;
 }
 
-.sendRight{
+.sendRight {
   right: 0;
 }
 
-.sendLeft{
+.sendLeft {
   right: 35%;
 }
 
-.formComp{
+.formComp {
   flex-direction: column;
 }
 
 button {
   padding: 1em;
 
-  border: 1px solid #EEFCF8;
+  border: 1px solid #eefcf8;
   border-radius: 5em;
-  
-  background-color: #035E7B;
 
-  color: #EEFCF8;
+  background-color: #035e7b;
+
+  color: #eefcf8;
   font-weight: bold;
   text-decoration: none;
 }
@@ -92,11 +92,11 @@ button:focus {
   outline: 0;
 }
 
-button:hover{
+button:hover {
   opacity: 0.9;
 }
 
 input {
   padding: 0.5em;
-  border: 1px solid #035E7B;
+  border: 1px solid #035e7b;
 }
