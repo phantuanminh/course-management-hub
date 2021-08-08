@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-const CourseCard = ({
+const ExtendedCard = ({
   courseName,
   courseHome,
   courseForum,
@@ -49,4 +49,4 @@ const CourseCard = ({
   );
 };
 
-export default CourseCard;
+export default ExtendedCard;

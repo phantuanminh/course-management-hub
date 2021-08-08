@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import Popup from "reactjs-popup";
 import styles from "./styles.module.scss";
 
-import CourseCard from "./CourseCard";
+import MinimizedCard from "./MinimizedCard";
+import ExtendedCard from "./ExtendedCard";
 
 const CardContainer = () => {
   const [cards, setCards] = useState([]);
@@ -34,12 +36,29 @@ const CardContainer = () => {
     getCards();
   }
 
+  const overlayStyle = { background: "rgba(0,0,0,0.9)" };
+
   return (
     <div className={styles.main}>
       <div className={styles.cardContainer}>
         {cards.map((card) => (
-          <div className={styles.card}>
-            <CourseCard
+          <Popup
+            modal
+            trigger={
+              <div className={styles.card}>
+                <MinimizedCard
+                  key={card.course_name}
+                  courseName={card.course_name}
+                  courseHome={card.course_home}
+                  courseForum={card.course_forum}
+                  courseMeeting={card.course_meeting}
+                  courseToDo={card.course_todo}
+                />
+              </div>
+            }
+            {...{ overlayStyle }}
+          >
+            <ExtendedCard
               key={card.course_name}
               courseName={card.course_name}
               courseHome={card.course_home}
@@ -47,7 +66,7 @@ const CardContainer = () => {
               courseMeeting={card.course_meeting}
               courseToDo={card.course_todo}
             />
-          </div>
+          </Popup>
         ))}
       </div>
     </div>
