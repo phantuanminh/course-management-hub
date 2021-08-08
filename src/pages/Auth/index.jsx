@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
+import Loading from "../../components/Loading";
 import { Redirect } from "react-router-dom";
 
 const Auth = () => {
@@ -10,14 +11,13 @@ const Auth = () => {
   const [isLoading, setIsLoading] = useState(true);
   const token = sessionStorage.getItem("access_token");
 
+  // If authenticated, redirect to user's homepage
   useEffect(() => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token }),
     };
-
-    // Verify user identity
     const verify = () => {
       fetch("http://localhost:5000/api/verify", requestOptions).then(
         (response) => {
@@ -28,16 +28,13 @@ const Auth = () => {
         }
       );
     };
-
     verify();
   }, [token]);
 
-  // Wait until request handled
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
-  // Redirect to home if logged in
   if (logged) {
     return <Redirect to="/home" />;
   }
