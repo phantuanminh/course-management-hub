@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
-import Loading from "../../pages/Loading";
+import Loading from "../Loading";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const [logged, setLogged] = useState(false);

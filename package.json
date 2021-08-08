@@ -15,7 +15,7 @@
     "web-vitals": "^1.1.2",
     "gh-pages": "^3.2.3",
     "base-64": "^1.0.0",
-    "react-token-auth": "^1.1.8"
+    "reactjs-popup": "^2.0.5"
   },
   "scripts": {
     "start-api": "cd api && env/bin/flask run --no-debugger",

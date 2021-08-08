@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./styles.module.scss";
 
 import CourseCard from "./CourseCard";
-import Loading from "../../pages/Loading";
 
 const CardContainer = () => {
   const [cards, setCards] = useState([]);
