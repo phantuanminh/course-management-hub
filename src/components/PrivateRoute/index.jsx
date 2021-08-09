@@ -9,7 +9,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
   useEffect(() => {
     isAuthenticated().then((response) => {
-      if (response.status === 201) {
+      if (response.status === 200) {
         setAuth(true);
       }
       setIsLoading(false);

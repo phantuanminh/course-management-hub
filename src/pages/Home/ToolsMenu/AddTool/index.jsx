@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import Popup from "reactjs-popup";
+import { addCard } from "../../../../utils/api";
 
 const AddForm = ({ close }) => {
   const [course_name, setName] = useState("");
@@ -8,35 +9,18 @@ const AddForm = ({ close }) => {
   const [course_forum, setForum] = useState("");
   const [course_meeting, setMeeting] = useState("");
   const [course_todo, setTodo] = useState("");
-  const token = sessionStorage.getItem("access_token");
 
-  const onSubmitClick = async (e) => {
+  const onSubmitClick = (e) => {
     e.preventDefault();
-
-    // Configure request options
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        token,
-        course_name,
-        course_home,
-        course_forum,
-        course_meeting,
-        course_todo,
-      }),
-    };
-
-    const response = await fetch(
-      "http://localhost:5000/api/new_card",
-      requestOptions
-    );
-
-    // If register success, console log the username and request access token
-    if (response.ok) {
-      console.log(response.status);
+    addCard({
+      course_name,
+      course_home,
+      course_forum,
+      course_meeting,
+      course_todo,
+    }).then((response) => {
       window.location.reload();
-    }
+    });
   };
 
   return (

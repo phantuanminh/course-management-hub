@@ -34,5 +34,13 @@ export const register = (username, password) => {
 };
 
 export const getToken = () => {
-  return request("GET", "/api/getToken");
+  return request("GET", "/api/token");
+};
+
+export const getResource = () => {
+  return request("GET", "/api/resource");
+};
+
+export const addCard = (data) => {
+  return request("POST", "/api/new_card", data);
 };

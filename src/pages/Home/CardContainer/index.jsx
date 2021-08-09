@@ -1,41 +1,23 @@
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import styles from "./styles.module.scss";
-import { Redirect } from "react-router";
 import MinimizedCard from "./MinimizedCard";
 import ExtendedCard from "./ExtendedCard";
+import { getResource } from "../../../utils/api";
 
 const CardContainer = () => {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const token = sessionStorage.getItem("access_token");
-  if (token === null) {
-    return <Redirect to="/logout" />;
-  }
-
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token }),
-  };
-
-  // Get user's cards
-  const getCards = () => {
-    const response = fetch(
-      "http://localhost:5000/api/resource",
-      requestOptions
-    );
-
-    if (response.status === 201) {
-      const data = response.json();
-      setCards(data.data);
-      setIsLoading(false);
-    }
+  const resource = async () => {
+    const response = await getResource();
+    const data = await response.json();
+    setCards(data.data);
+    setIsLoading(false);
   };
 
   if (isLoading) {
-    getCards();
+    resource();
   }
 
   const overlayStyle = { background: "rgba(0,0,0,0.9)" };

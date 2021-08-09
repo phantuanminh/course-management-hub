@@ -35,7 +35,7 @@ def register():
     Register a new user by parsing a POST request containing user credentials.
     .. example::
         $ curl http://localhost:5000/api/register -X POST \
-            -d '{"username":<username>,"password":<password>}'
+            -d '{"username":"<username>","password":"<password>"}'
     """
     req = request.get_json(force=True)
     username = req.get('username')
@@ -50,6 +50,7 @@ def register():
     user.hash_password(password)
     db.session.add(user)
     db.session.commit()
+    g.user = user
     return (jsonify({'access_token': g.user.generate_auth_token(600).decode('ascii')}), 200)
 
 
@@ -59,7 +60,7 @@ def login():
     Log a user in by parsing a POST request containing user credentials and issuing a JWT token.
     .. example::
        $ curl http://localhost:5000/api/login -X POST \
-            -d '{"username":<username>,"password":<password>}'
+            -d '{"username":"<username>","password":"<password>"}'
     """
     req = request.get_json(force=True)
     username = req.get('username', None)
@@ -120,13 +121,8 @@ def new_card():
     issuing a JWT token.
     .. example::
         $ curl http://localhost:5000/api/new_card -X POST \
-            -d '{\
-                "course_name":<course_name>,\
-                "course_home":<course_home>,\
-                "course_forum":"<course_forum>",\
-                "course_meeting":<course_meeting>,\
-                "course_todo":<course_todo>\
-                }'
+            -d '{"course_name":"<course_name>","course_home":"<course_home>","course_forum":"<course_forum>","course_meeting":"<course_meeting>","course_todo":"<course_todo>"}'\
+            -u <username>:<password>
     """
     req = request.get_json(force=True)
     # Construct a card object with info
