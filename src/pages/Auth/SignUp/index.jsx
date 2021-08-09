@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
-import base64 from "base-64";
+import { register } from "../../../utils/api";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -9,43 +9,11 @@ const SignUp = () => {
 
   const onSubmitClick = async (e) => {
     e.preventDefault();
-
-    // Configure request options
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    };
-
-    const response = await fetch(
-      "http://localhost:5000/api/register",
-      requestOptions
-    );
-
-    // If register success, console log the username and request access token
+    const response = await register(username, password);
+    // If register success, save access token and reload page
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-
-      const tokenRequestOptions = {
-        headers: {
-          Authorization: "Basic " + base64.encode(username + ":" + password),
-        },
-      };
-
-      // Request and console log token
-      const tokenResponse = await fetch(
-        "http://localhost:5000/api/token",
-        tokenRequestOptions
-      );
-
-      if (tokenResponse.ok) {
-        const token = await tokenResponse.json();
-        console.log(token);
-        sessionStorage.setItem("access_token", token.access_token);
-      }
-
-      // Reload page with authentication stored
+      sessionStorage.setItem("access_token", data.access_token);
       window.location.reload();
     }
   };

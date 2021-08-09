@@ -28,7 +28,7 @@ def create_app():
     cors.init_app(app)
 
     # Register the API endpoints
-    from modules.routes import routes
+    from core.routes import routes
     app.register_blueprint(routes)
 
     # (Local) Init SQLite database if not existed

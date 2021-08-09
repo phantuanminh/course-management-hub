@@ -1,6 +1,6 @@
 from flask import Blueprint, abort, request, jsonify, g, url_for
-from modules import auth, db
-from modules.modules import User, Card
+from core import auth, db
+from core.modules import User, Card
 
 # In Flask, a blueprint is just a group of related routes (the functions below), it helps organize your code
 routes = Blueprint('api', __name__)
@@ -50,7 +50,7 @@ def register():
     user.hash_password(password)
     db.session.add(user)
     db.session.commit()
-    return (jsonify({'username': user.username}), 201)
+    return (jsonify({'access_token': g.user.generate_auth_token(600).decode('ascii')}), 200)
 
 
 @routes.route('/api/login', methods=['POST'])
@@ -67,10 +67,10 @@ def login():
     is_validated = verify_password(username, password)
     if not (is_validated):
         abort(400)
-    return ('', 201)
+    return (jsonify({'access_token': g.user.generate_auth_token(600).decode('ascii')}), 200)
 
 
-@routes.route('/api/auth')
+@routes.route('/api/auth', methods=['GET'])
 @auth.login_required
 def authenticate():
     """
@@ -80,7 +80,7 @@ def authenticate():
        $ curl http://localhost:5000/api/auth -i -X GET \
             -u <username>:<password>
     """
-    return ('', 201)
+    return ('', 200)
 
 
 @routes.route('/api/token')
@@ -109,7 +109,7 @@ def get_resource():
 
     cards = [card.serialize() for card in Card.get_cards(g.user.id).all()]
 
-    return (jsonify(data=cards), 201)
+    return (jsonify(data=cards), 200)
 
 
 @routes.route('/api/new_card', methods=['POST'])
@@ -140,4 +140,4 @@ def new_card():
     db.session.add(card)
     db.session.commit()
 
-    return ('', 201)
+    return ('', 200)

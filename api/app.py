@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from modules import create_app
+from core import create_app
 
 app = create_app()
 

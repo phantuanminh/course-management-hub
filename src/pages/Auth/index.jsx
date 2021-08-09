@@ -4,41 +4,27 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import Loading from "../../components/Loading";
 import { Redirect } from "react-router-dom";
-import base64 from "base-64";
+import { isAuthenticated } from "../../utils/api";
 
 const Auth = () => {
   const [welcome, setWelcome] = useState(false);
-  const [logged, setLogged] = useState(false);
+  const [auth, setAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const token = sessionStorage.getItem("access_token");
 
-  // If authenticated, redirect to user's homepage
   useEffect(() => {
-    const requestOptions = {
-      headers: { Authorization: "Bearer " + base64.encode(token) },
-    };
-
-    // Verify user identity
-    const verify = () => {
-      fetch("http://localhost:5000/api/verify", requestOptions).then(
-        (response) => {
-          if (response.status === 201) {
-            setLogged(true);
-          }
-          setIsLoading(false);
-        }
-      );
-    };
-
-    verify();
-  }, [token]);
+    isAuthenticated().then((response) => {
+      if (response.status === 200) {
+        setAuth(true);
+      }
+      setIsLoading(false);
+    });
+  });
 
   if (isLoading) {
     return <Loading />;
   }
 
-  if (logged) {
-    return <div>hello</div>;
+  if (auth) {
     return <Redirect to="/home" />;
   }
 

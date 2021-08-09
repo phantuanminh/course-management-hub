@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
-import base64 from "base-64";
+import { login } from "../../../utils/api";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -9,38 +9,12 @@ const SignIn = () => {
 
   const onSubmitClick = async (e) => {
     e.preventDefault();
+    const response = await login(username, password);
 
-    // Configure request options
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    };
-
-    const response = await fetch(
-      "http://localhost:5000/api/login",
-      requestOptions
-    );
-
-    // If register success, console log the username and request access token
+    // If sign in success, save access token and reload page
     if (response.ok) {
-      const tokenRequestOptions = {
-        headers: {
-          Authorization: "Basic " + base64.encode(username + ":" + password),
-        },
-      };
-
-      // Request and console log token
-      const tokenResponse = await fetch(
-        "http://localhost:5000/api/token",
-        tokenRequestOptions
-      );
-      if (tokenResponse.ok) {
-        const token = await tokenResponse.json();
-        sessionStorage.setItem("access_token", token.access_token);
-      }
-
-      // Reload page with authentication stored
+      const data = await response.json();
+      sessionStorage.setItem("access_token", data.access_token);
       window.location.reload();
     }
   };

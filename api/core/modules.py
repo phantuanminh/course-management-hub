@@ -1,4 +1,4 @@
-from modules import db, secret_key
+from core import db, secret_key
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import time
