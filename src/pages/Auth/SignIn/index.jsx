@@ -24,9 +24,6 @@ const SignIn = () => {
 
     // If register success, console log the username and request access token
     if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-
       const tokenRequestOptions = {
         headers: {
           Authorization: "Basic " + base64.encode(username + ":" + password),
@@ -40,7 +37,6 @@ const SignIn = () => {
       );
       if (tokenResponse.ok) {
         const token = await tokenResponse.json();
-        console.log(token);
         sessionStorage.setItem("access_token", token.access_token);
       }
 

@@ -32,7 +32,7 @@ frontend network |
                   .
 backend network  |
                   .
-                   \____ Database (MongoDB)
+                   \____ SQL Database
 ```
 
 ## How to run

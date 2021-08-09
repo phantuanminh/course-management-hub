@@ -53,10 +53,6 @@ class Card(db.Model):
         }
 
     @staticmethod
-    def get_cards(token):
-        try:
-            data = jwt.decode(token, secret_key,
-                              algorithms=['HS256'])
-        except:
-            return
-        return Card.query.filter_by(user_id=data['id'])
+    def get_cards(user_id):
+        """Return cards with specified user_id"""
+        return Card.query.filter_by(user_id=user_id)

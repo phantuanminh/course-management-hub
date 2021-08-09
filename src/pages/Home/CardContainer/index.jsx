@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import styles from "./styles.module.scss";
-
+import { Redirect } from "react-router";
 import MinimizedCard from "./MinimizedCard";
 import ExtendedCard from "./ExtendedCard";
 
@@ -10,6 +10,9 @@ const CardContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const token = sessionStorage.getItem("access_token");
+  if (token === null) {
+    return <Redirect to="/logout" />;
+  }
 
   const requestOptions = {
     method: "POST",
@@ -18,17 +21,16 @@ const CardContainer = () => {
   };
 
   // Get user's cards
-  const getCards = async () => {
-    const response = await fetch(
+  const getCards = () => {
+    const response = fetch(
       "http://localhost:5000/api/resource",
       requestOptions
     );
 
     if (response.status === 201) {
-      const data = await response.json();
+      const data = response.json();
       setCards(data.data);
       setIsLoading(false);
-      console.log(cards);
     }
   };
 

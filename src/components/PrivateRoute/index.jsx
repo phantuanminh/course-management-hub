@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 import Loading from "../Loading";
+import base64 from "base-64";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const [logged, setLogged] = useState(false);
@@ -9,9 +10,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
   useEffect(() => {
     const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token }),
+      headers: { Authorization: "Bearer " + base64.encode(token) },
     };
 
     // Verify user identity
@@ -21,6 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           if (response.status === 201) {
             setLogged(true);
           }
+          console.log(token);
           setIsLoading(false);
         }
       );
