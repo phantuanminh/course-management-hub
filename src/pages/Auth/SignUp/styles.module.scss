@@ -1,12 +1,13 @@
-.center {
+.formComp {
+  flex-direction: column;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.formComp {
-  flex-direction: column;
+.title {
+  padding-bottom: 15px;
 }
 
 .signUpForm {
@@ -15,10 +16,29 @@
 }
 
 .signUpForm > label {
+  font-size: 15px;
   padding: 0.5em;
   width: 100%;
 }
 
-.signUpForm > label > input {
+.signUpForm > input {
   width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #d24d57;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #d24d57;
 }

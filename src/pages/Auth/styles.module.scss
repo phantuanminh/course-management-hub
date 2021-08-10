@@ -1,55 +1,62 @@
+.cover {
+  background-image: url("https://images.unsplash.com/photo-1486520299386-6d106b22014b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+  background-size: 100%;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+}
+
 .container {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-right: -50%;
   transform: translate(-50%, -50%);
   width: 60%;
   height: 60%;
   text-align: center;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 1);
+  opacity: 1;
 }
 
 .banner {
+  border-radius: 20px;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
-  right: 75%;
+  right: 65%;
 
-  width: 25%;
+  width: 35%;
   height: 100%;
 
   flex-direction: column;
 
-  background-color: rgba(255, 0, 0, 0.5);
-  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
 
-  color: #eefcf8;
+  color: white;
   text-align: center;
 
   transition: 2s;
 }
 
 .form {
+  border-radius: 20px;
   position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1;
   right: 0;
 
-  width: 75%;
+  width: 65%;
   height: 100%;
 
-  background-color: #eefcf8;
+  background-color: rgba(0, 0, 0, 0.6);
   opacity: 1;
 
   font-weight: bold;
-  color: #035e7b;
+  color: white;
 
   transition: 2s;
 }
@@ -59,35 +66,31 @@
 }
 
 .sendLeft {
-  right: 25%;
+  right: 35%;
 }
 
 .formComp {
   flex-direction: column;
 }
 
-button {
-  padding: 1em;
-
-  border: 1px solid #eefcf8;
-  border-radius: 5em;
-
-  background-color: #035e7b;
-
-  color: #eefcf8;
-  font-weight: bold;
-  text-decoration: none;
+.button {
+  display: block;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #d24d57;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 15px;
+  padding: 15px 20px 15px 20px;
+  transition-duration: 0.4s;
 }
 
-button:focus {
-  outline: 0;
-}
-
-button:hover {
-  opacity: 0.9;
+.button:hover {
+  background-color: #d24d57;
 }
 
 input {
   padding: 0.5em;
-  border: 1px solid #035e7b;
+  border: 1px solid black;
+  border-radius: 20px;
 }

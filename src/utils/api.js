@@ -29,8 +29,8 @@ export const login = (username, password) => {
   return request("POST", "/api/login", { username, password });
 };
 
-export const register = (username, password) => {
-  return request("POST", "/api/register", { username, password });
+export const register = (email, username, password) => {
+  return request("POST", "/api/register", { email, username, password });
 };
 
 export const getToken = () => {

@@ -38,15 +38,20 @@ def register():
             -d '{"username":"<username>","password":"<password>"}'
     """
     req = request.get_json(force=True)
+    email = req.get('email')
     username = req.get('username')
     password = req.get('password')
     # Missing arguments
-    if username is None or password is None:
+    if email is None or username is None or password is None:
         abort(400)
+    # Email existed
+    if User.query.filter_by(email=email).first() is not None:
+        abort(403)
     # User existed
     if User.query.filter_by(username=username).first() is not None:
         abort(403)
     user = User(username=username)
+    user.email = email
     user.hash_password(password)
     db.session.add(user)
     db.session.commit()

@@ -41,16 +41,23 @@ const Auth = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={setBannerClass()}>
-        {welcome ? <h2>Already have an account?</h2> : <h2>New to us?</h2>}
+    <div className={styles.cover}>
+      <div className={styles.container}>
+        <div className={setBannerClass()}>
+          {welcome ? <h2>Had an account?</h2> : <h2>New to us?</h2>}
 
-        <button onClick={() => setWelcome(!welcome)}>
-          {welcome ? "Sign In" : "Create Account"}
-        </button>
+          <button
+            className={styles.button}
+            onClick={() => setWelcome(!welcome)}
+          >
+            {welcome ? "Sign In" : "Sign Up"}
+          </button>
+        </div>
+
+        <div className={setFormClass()}>
+          {welcome ? <SignUp /> : <SignIn />}
+        </div>
       </div>
-
-      <div className={setFormClass()}>{welcome ? <SignUp /> : <SignIn />}</div>
     </div>
   );
 };
