@@ -2,6 +2,7 @@ from core import db, secret_key
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import time
+import re
 
 
 class User(db.Model):
@@ -30,6 +31,24 @@ class User(db.Model):
         except:
             return
         return User.query.get(data['id'])
+
+    @staticmethod
+    def is_email_syntax_valid(email):
+        """Check whether email syntax is valid."""
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        if(re.fullmatch(regex, email)):
+            return True
+        return False
+
+    @staticmethod
+    def is_username_syntax_valid(username):
+        # TODO: Set a condition for this method
+        return True
+
+    @staticmethod
+    def is_password_syntax_valid(password):
+        # TODO: Set a condition for this method
+        return True
 
 
 class Card(db.Model):

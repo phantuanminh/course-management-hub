@@ -43,13 +43,20 @@ def register():
     password = req.get('password')
     # Missing arguments
     if email is None or username is None or password is None:
-        abort(400)
+        abort(400, 'Missing one or more arguments!')
+    # Check syntax
+    if not (User.is_email_syntax_valid(email)):
+        return (jsonify({'error': 'Invalid email syntax!'}), 400)
+    if not (User.is_username_syntax_valid(username)):
+        return (jsonify({'error': 'Invalid username syntax!'}), 400)
+    if not (User.is_password_syntax_valid(password)):
+        return (jsonify({'error': 'Invalid password syntax!'}), 400)
     # Email existed
     if User.query.filter_by(email=email).first() is not None:
-        abort(403)
+        return (jsonify({'error': 'Email has already been used!'}), 400)
     # User existed
     if User.query.filter_by(username=username).first() is not None:
-        abort(403)
+        return (jsonify({'error': 'Username has already existed!'}), 400)
     user = User(username=username)
     user.email = email
     user.hash_password(password)

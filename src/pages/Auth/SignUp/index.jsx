@@ -6,6 +6,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const onSubmitClick = async (e) => {
     e.preventDefault();
@@ -15,6 +16,10 @@ const SignUp = () => {
       const data = await response.json();
       sessionStorage.setItem("access_token", data.access_token);
       window.location.reload();
+    } else {
+      // Set error message
+      const message = await response.json();
+      setError(message.error);
     }
   };
 
@@ -22,7 +27,7 @@ const SignUp = () => {
     <div className={styles.formComp}>
       <h1 className={styles.title}>Sign Up</h1>
       <form className={styles.signUpForm}>
-        <label>Email*</label>
+        <label>Email</label>
         <input
           type="email"
           name="email"
@@ -31,7 +36,7 @@ const SignUp = () => {
           required
         />
 
-        <label>Username*</label>
+        <label>Username</label>
         <input
           name="username"
           value={username}
@@ -39,7 +44,7 @@ const SignUp = () => {
           required
         />
 
-        <label>Password*</label>
+        <label>Password</label>
         <input
           type="password"
           name="password"
@@ -48,6 +53,7 @@ const SignUp = () => {
           required
         />
 
+        <div className={styles.error}>{error}</div>
         <br />
         <button className={styles.button} type="submit" onClick={onSubmitClick}>
           Sign Up
