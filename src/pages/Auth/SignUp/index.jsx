@@ -6,10 +6,16 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassWord, setConfirmPassWord] = useState("");
   const [error, setError] = useState("");
 
   const onSubmitClick = async (e) => {
     e.preventDefault();
+    // Make sure password and confirm password match
+    if (password !== confirmPassWord) {
+      setError("Confirm password does not match");
+      return;
+    }
     const response = await register(email, username, password);
     // If register success, save access token and reload page
     if (response.ok) {
@@ -31,6 +37,7 @@ const SignUp = () => {
         <input
           type="email"
           name="email"
+          placeholder="Example: course.management.hub@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -39,6 +46,7 @@ const SignUp = () => {
         <label>Username</label>
         <input
           name="username"
+          placeholder="Length: 4 - 32 characters"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -48,8 +56,18 @@ const SignUp = () => {
         <input
           type="password"
           name="password"
+          placeholder="Mininum: 8 characters, contains one letter and one number"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          value={confirmPassWord}
+          onChange={(e) => setConfirmPassWord(e.target.value)}
           required
         />
 

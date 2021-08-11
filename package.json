@@ -18,7 +18,7 @@
     "reactjs-popup": "^2.0.5"
   },
   "scripts": {
-    "start-api": "cd api && env/bin/flask run --no-debugger",
+    "start-api": "cd api && flask run --no-debugger",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -42,8 +42,8 @@ def register():
     username = req.get('username')
     password = req.get('password')
     # Missing arguments
-    if email is None or username is None or password is None:
-        abort(400, 'Missing one or more arguments!')
+    if email is None or username is None or password is None or len(email) == 0 or len(username) == 0 or len(password) == 0:
+        return (jsonify({'error': 'Missing one or more arguments!'}), 400)
     # Check syntax
     if not (User.is_email_syntax_valid(email)):
         return (jsonify({'error': 'Invalid email syntax!'}), 400)
@@ -77,9 +77,13 @@ def login():
     req = request.get_json(force=True)
     username = req.get('username', None)
     password = req.get('password', None)
+    # Missing arguments
+    if username is None or password is None or len(username) == 0 or len(password) == 0:
+        return (jsonify({'error': 'Missing one or more arguments!'}), 400)
+    # Validate user
     is_validated = verify_password(username, password)
     if not (is_validated):
-        abort(400)
+        return (jsonify({'error': 'Incorrect username or password!'}), 400)
     return (jsonify({'access_token': g.user.generate_auth_token(600).decode('ascii')}), 200)
 
 

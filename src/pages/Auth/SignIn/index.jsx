@@ -5,6 +5,7 @@ import { login } from "../../../utils/api";
 const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const onSubmitClick = async (e) => {
     e.preventDefault();
@@ -15,6 +16,10 @@ const SignIn = () => {
       const data = await response.json();
       sessionStorage.setItem("access_token", data.access_token);
       window.location.reload();
+    } else {
+      // Set error message
+      const message = await response.json();
+      setError(message.error);
     }
   };
 
@@ -38,7 +43,7 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
+        <div className={styles.error}>{error}</div>
         <br />
         <button className={styles.button} type="submit" onClick={onSubmitClick}>
           Sign In

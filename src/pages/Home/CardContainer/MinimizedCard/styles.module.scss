@@ -23,17 +23,18 @@
     grid-template-columns: 2fr 1fr;
     text-align: left;
   }
-
   .courseToDo {
+    text-align: left;
     padding-left: 10px;
     padding-bottom: 10px;
-    text-align: left;
+  }
+
+  .courseIcon {
+    padding-left: 10px;
   }
 
   .courseLink {
     padding-left: 10px;
-    text-decoration: none;
-    color: black;
   }
 
   .courseMeeting {

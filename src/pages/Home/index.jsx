@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-import NavBar from "../../components/NavBar";
+import NavBar from "./NavBar";
 import CardContainer from "./CardContainer";
 import ToolsMenu from "./ToolsMenu";
 

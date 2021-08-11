@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
+import clsx from "clsx";
 
 const MinimizedCard = ({
   courseName,
@@ -14,25 +15,26 @@ const MinimizedCard = ({
       <div className={styles.courseInfo}>
         <div>
           <li>
+            <i className={clsx("fas fa-home", styles.courseIcon)} />
             <a className={styles.courseLink} href={courseHome}>
-              <i className="fas fa-home" />
-              &nbsp;&nbsp;Course Home
+              Course Home
             </a>
           </li>
           <br />
           <li>
+            <i className={clsx("far fa-comments", styles.courseIcon)} />
             <a className={styles.courseLink} href={courseForum}>
-              <i className="far fa-comments" />
-              &nbsp;&nbsp;Forum
+              Forum
             </a>
           </li>
           <br />
           <li>
+            <i className={clsx("fas fa-ellipsis-h", styles.courseIcon)} />
             <a className={styles.courseLink} href="#">
-              <i className="fas fa-ellipsis-h" />
-              &nbsp;&nbsp;Other Resources
+              Other Resources
             </a>
           </li>
+          <br />
         </div>
         <div className={styles.courseMeeting}>
           <a href={courseMeeting} style={{ color: "#309bb2" }}>
