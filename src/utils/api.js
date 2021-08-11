@@ -1,5 +1,5 @@
 import base64 from "base-64";
-const API = "http://localhost:5000";
+const API = "https://course-management-hub.herokuapp.com";
 
 async function request(method, endpoint, body = null) {
   const options = {

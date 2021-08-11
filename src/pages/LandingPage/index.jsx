@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 
 import DEMO_1 from "../../assets/demo-1.png";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -12,9 +13,9 @@ const LandingPage = () => {
       </div>
       <div className={styles.menu}>
         <div>
-          <a className={styles.button} href="/auth">
+          <Link className={styles.button} to="/auth">
             <span>Getting Started</span>
-          </a>
+          </Link>
         </div>
       </div>
       <div className={styles.demo}>

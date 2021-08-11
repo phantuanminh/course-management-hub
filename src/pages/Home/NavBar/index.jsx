@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 const NavBar = () => {
@@ -7,12 +8,12 @@ const NavBar = () => {
       <div className={styles.navTitle}>
         <h1 className={styles.navText}>Course Management Hub</h1>
       </div>
-      <a className={styles.navItem} href="/logout">
+      <Link className={styles.navItem} to="/logout">
         <i className="far fa-user-circle" />
-      </a>
-      <a className={styles.navItem} href="/logout">
+      </Link>
+      <Link className={styles.navItem} to="/logout">
         <i className="far fa-calendar-alt" />
-      </a>
+      </Link>
     </nav>
   );
 };
